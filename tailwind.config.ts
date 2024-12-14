@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+const { nextui } = require("@nextui-org/react");
 
 const svgToDataUri = require("mini-svg-data-uri");
 
@@ -14,9 +15,11 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/**/*.{ts,tsx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   // Enabling dark mode
-  darkMode: "class", // Assuming you want to enable dark mode based on the class strategy
+  darkMode: "class",
+  // Assuming you want to enable dark mode based on the class strategy
   theme: {
     // Merging container configuration from the second file
     container: {
@@ -154,7 +157,8 @@ const config: Config = {
   },
   // Merging plugins, adding any unique plugins from both files
   plugins: [
-    require("tailwindcss-animate"), // Assuming require is resolved in your environment
+    require("tailwindcss-animate"),
+    nextui(),
     // Add other unique plugins here
     function ({ matchUtilities, theme }: any) {
       matchUtilities(
